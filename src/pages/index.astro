@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const cases = (await getCollection('cases')).sort(
+  (a, b) => (b.data.year ?? 0) - (a.data.year ?? 0)
+);
+---
+<Base title="Mathilde Vita Blixenkrone-Møller" description="Design and frontend work.">
+  <h1>Mathilde Vita Blixenkrone-Møller</h1>
+  <p class="lede">
+    ?? BRUG FOR INPUT: to eller tre linjer om dig. Hvad du laver, og hvad du
+    gerne vil lave mere af.
+  </p>
+
+  <ul class="cases">
+    {cases.map((c) => (
+      <li>
+        <a href={`/work/${c.id}`}>
+          <span class="year">{c.data.year}</span>
+          <h2>{c.data.title}</h2>
+          <p>{c.data.summary}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

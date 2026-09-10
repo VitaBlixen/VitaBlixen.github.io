@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="name" href="/">Mathilde Vita Blixenkrone-Møller</a>
+        <nav>
+          <a href="/">Work</a>
+          <a href="/about">About</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="wrap">mathildevita@hotmail.com</div>
+    </footer>
+  </body>
+</html>
